@@ -56,7 +56,7 @@ function randomNum(min,max,length,repeatedAllowed) //length:is how many random n
 function SlideShow(imageName)
 {
   this.imageName = imageName;
-  this.path = `../images/${this.imageName}.jpg`;
+  this.path = `images/${this.imageName}.jpg`;
   this.votes = 0;
   this.views = 0;
   SlideShow.all.push(this);
