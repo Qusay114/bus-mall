@@ -1,0 +1,120 @@
+body
+{
+    background-image : url('https://img.wallpapersafari.com/desktop/1600/900/64/73/uUA9q6.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+    /* background-size:100% 100%; */
+    font-family: 'kalam';
+    background-attachment: fixed;
+}
+
+header h1
+{
+    font-size:35px;
+    text-align:center;
+    margin-top:40px;
+}
+header p 
+{
+    font-size:25px;
+    text-align:center;
+}
+.imageSlide
+{
+    width:20%;
+    height:20%;
+}
+
+.imageSlide
+ {
+    margin-top: 7%;
+    margin-left: 9%;
+    border-radius: 19%;
+}
+
+.imageSlide:hover
+{
+    cursor: pointer;
+}
+
+/* in case I used a table */
+footer table
+{
+    margin-top: 69px;
+    margin-left: 24%;
+    /* padding: 15px; */
+    /* border-radius: 35px; */
+    background-color: #ffffff75;
+    /* padding: 61px; */
+    min-width: 56%;
+    border-radius: 20px;
+}
+
+
+footer table, footer th, footer td 
+{
+    border: 1px solid black;
+    padding: 20px;
+    color: #9a000e;
+    border-radius: 26px;
+}
+
+footer th
+{
+    color:black;
+}
+
+
+a
+{
+    text-decoration: none;
+    color:black;
+}
+
+footer tr:hover
+{
+    background-color: white;
+}
+
+
+footer table
+{
+    border-radius: 20px;
+}
+/* the end for table design */
+
+/* the style for the unorder list in footer */
+footer ul 
+{
+    margin-top: 5%;
+    margin-left:34%;
+    font-size: 25px;
+    background-color: #ffffffad;
+    width: 43%;
+    border-radius: 4%;
+    padding-bottom: 36px
+}
+
+footer li 
+{
+    padding-top: 51px;
+    padding-left: 52px;
+    list-style-type: disclosure-closed;
+}
+
+#showResultBtn
+{
+    display:none;
+    height: 40px;
+    width: 165px;
+    border-radius: 23px;
+    margin-left: 43%;
+    margin-top: 3%;
+    font-size:20px;
+}
+
+#showResultBtn:hover
+{
+    cursor:pointer;
+    background-color:#640d1479;
+}
