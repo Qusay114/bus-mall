@@ -23,7 +23,7 @@ const image2 = document.getElementById('img2');
 const image3 = document.getElementById('img3');
 
 let imageIndex =[];
-const rounds = 25;
+const rounds = 3;
 let counterRounds = 0;
 
 //create random function
