@@ -2,7 +2,7 @@
 
 //create a list of the images names
 const imgNames = [
-  'banana',
+  'banana', //imgNames[0]
   'bag',
   'bathroom',
   'boots',
@@ -13,7 +13,9 @@ const imgNames = [
   'dragon',
   'pen',
   'pet-sweep',
-  'scissors'
+  'scissors',
+  'shark',
+  'tauntaun'
 ];
 
 //get the images elements
@@ -21,26 +23,30 @@ const imagesContainer = document.getElementById('imagesContainer');
 const image1 = document.getElementById('img1');
 const image2 = document.getElementById('img2');
 const image3 = document.getElementById('img3');
-
+// image1.src='../images/bag.jps'; ctrl + /
 let imageIndex =[];
-const rounds = 5;
+let usedNums = [];
+let votes =[];
+let views = [];
+const rounds = 3;
 let counterRounds = 0;
 
+// array.indexOf(12);
 //create random function
-function randomNum(min,max,length,repeatedAllowed) //length:is how many random numbers you want , repeatedAllowed is do you want to allow repeated number or only uniqe (true or false)
+function randomNum(min,max,length,repeatedAllowed, notTheseNums) //length:is how many random numbers you want , repeatedAllowed is do you want to allow repeated number or only uniqe (true or false)
 {
   let randomNumbers = [];
   let number = 0;
   let posiible = 1; //this to hold a value I will check on it to see if it's possible to not repeat numbers somI will not enter infinite loop
-  if(max-min < length) //to check if it's possible to not repeat the numbers
+  if(max-min < length || (max-notTheseNums.length)<(length-1)) //to check if it's possible to not repeat the numbers
     posiible=0;
 
   for(let i = 0; i<length ; i++)
   {
     number = Math.floor(Math.random()*(max-min)+min);
     // randomNumbers.push(number);
-    console.log('index is ', randomNumbers.indexOf(number));
-    if(posiible && !repeatedAllowed && randomNumbers.indexOf(number)===-1)
+    // console.log('index is ', randomNumbers.indexOf(number));
+    if(posiible && !repeatedAllowed && randomNumbers.indexOf(number)===-1 && notTheseNums.indexOf(number)===-1)
 
       randomNumbers.push(number);
 
@@ -49,8 +55,10 @@ function randomNum(min,max,length,repeatedAllowed) //length:is how many random n
     else
       randomNumbers.push(number);
   }
+  // console.log('random numbers ', randomNumbers);
   return randomNumbers;
 }
+// let obj = [];
 
 //create a constructor for the images slide show
 function SlideShow(imageName)
@@ -60,6 +68,8 @@ function SlideShow(imageName)
   this.votes = 0;
   this.views = 0;
   SlideShow.all.push(this);
+  // obj.push(this)
+
 
 }
 SlideShow.all = [];
@@ -74,13 +84,18 @@ for(let i = 0 ; i<imgNames.length ; i++)
 console.table(SlideShow.all);
 // console.log(randomNum(5,12,4,false));
 
+SlideShow.all[0];
 //to show the images on the page
 function render()
 {
-  imageIndex = randomNum(0,imgNames.length-1,3,false);
-  image1.src = SlideShow.all[imageIndex[0]].path;
+  imageIndex = randomNum(0,imgNames.length-0.5,3,false,usedNums); //[4,9,1] //[2,4,5]
+  usedNums.push(imageIndex[0]);
+  usedNums.push(imageIndex[1]);
+  usedNums.push(imageIndex[2]);
+  // console.log('used nums ', usedNums);
+  image1.src = SlideShow.all[imageIndex[0]].path; //SlidShow.all[4].path
   SlideShow.all[imageIndex[0]].views ++;
-  image2.src = SlideShow.all[imageIndex[1]].path;
+  image2.src = SlideShow.all[imageIndex[1]].path; //SlideShow.all[9]
   SlideShow.all[imageIndex[1]].views ++;
   image3.src = SlideShow.all[imageIndex[2]].path;
   SlideShow.all[imageIndex[2]].views ++;
@@ -102,7 +117,8 @@ function trafiic(x)
   if(counterRounds<rounds)
   {
     SlideShow.all[imageIndex[x-1]].votes ++ ;
-    render();
+    if(counterRounds<rounds-1)
+      render();
     // if(counterRounds === rounds )
     // {
     //   // createTable();
@@ -116,8 +132,11 @@ function trafiic(x)
     // createList();
     // console.log('it entered the if ' , SlideShow.all);
     document.getElementById('showResultBtn').style.display = 'block';
+    // image1.removeEventListener('click',trafiic(x));
+    // image2.removeEventListener('click',trafiic(x));
+    // image3.removeEventListener('click',trafiic,true);
   }
-  
+
 }
 
 // if(counterRounds === rounds )
@@ -166,12 +185,48 @@ function createList()
   if(btnClicked>0)
     return ;
   const ulEl = document.createElement('ul');
-  document.getElementById('footer').appendChild(ulEl);
+  document.getElementById('dataList').appendChild(ulEl);
   for(let i =0 ; i<SlideShow.all.length ; i++)
   {
+    votes.push(SlideShow.all[i].votes);
+    views.push(SlideShow.all[i].views);
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
     liEl.textContent = `${SlideShow.all[i].imageName} had ${SlideShow.all[i].votes} votes, and was seen ${SlideShow.all[i].views} times`;
   }
+  chartRender();
+  console.log('votes ',votes);
+  console.log('views ', views);
   btnClicked++;
+}
+
+
+
+function chartRender() {
+  let ctx = document.getElementById('dataChart').getContext('2d');
+  let chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+      labels: imgNames,
+      datasets: [{
+        label: 'Product votes',
+        fontColor:'white',
+        backgroundColor: 'yellow',
+        borderColor: 'white',
+        data: votes
+      },
+      {
+        label: 'Product views',
+        backgroundColor: '#003f5c',
+        borderColor: 'white',
+        data: views
+      }]
+    },
+
+    // Configuration options go here
+    options: {}
+  });
 }

@@ -13,12 +13,18 @@
 <body>
 
     <header>
-        <h1>Welcome to Our Mall </h1>
-        <br><br>
-        <p>please click on the product you like</p>
+        <ul>
+        <h1>Bus Mall </h1>
+            <li id="li1">Home</li>
+            <li>Products</li>
+            <li>Branches</li>
+            <li>About us</li>
+        </ul>
+        
     </header>
 
     <main>
+        <p>please click on the product you like</p>
         <section id="imagesContainer">
             <img src="" id="img1" class="imageSlide">
             <img src="" id="img2" class="imageSlide">
@@ -28,12 +34,21 @@
         <button id="showResultBtn">
             Show Results
         </button>
+        <section id="dataList"></section>
+        <canvas id="dataChart"></canvas>
     </main>
 
     <footer id="footer">
-        
+        <ul>
+            <li>INFORMATION</li>
+            <li>LEGAL</li>
+            <li>HELP</li>
+            <li>SOCIAL MEDIA</li>
+        </ul>
+        <h1>&copy; by Qusay Al-Amarat</h1>
     </footer>
-    
+    <!-- <canvas id="dataChart"></canvas> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/app.js">
     </script>
 </body>

@@ -1,23 +1,55 @@
 body
 {
-    background-image : url('https://img.wallpapersafari.com/desktop/1600/900/64/73/uUA9q6.png');
+    /* background-image : url('https://img.wallpapersafari.com/desktop/1600/900/64/73/uUA9q6.png'); */
     background-repeat:no-repeat;
     background-size: cover;
     /* background-size:100% 100%; */
     font-family: 'kalam';
     background-attachment: fixed;
+    background-color:rgba(255, 0, 0, 0.699);
 }
-
+/* the style for the header */
+header ul 
+{
+    background-color:white;
+    width:100%;
+    min-height:69px;
+    padding-top:31px;
+}
 header h1
 {
+    display:inline;
     font-size:35px;
     text-align:center;
     margin-top:40px;
+    color:rgba(255, 0, 0, 0.699);
 }
-header p 
+
+header ul li 
+{
+    font-size: 25px;
+    /* margin-left:10%; */
+    display:inline;
+    padding:30px;
+}
+header ul li:hover
+{
+    cursor:pointer;
+    background-color:rgba(255, 0, 0, 0.699);
+}
+#li1
+{
+    margin-left:23%;
+    /* background-color:red; */
+}
+/* End style of the header */
+
+/* the style for the main */
+main p 
 {
     font-size:25px;
     text-align:center;
+    margin-top:10%;
 }
 .imageSlide
 {
@@ -38,7 +70,7 @@ header p
 }
 
 /* in case I used a table */
-footer table
+main table
 {
     margin-top: 69px;
     margin-left: 24%;
@@ -51,7 +83,7 @@ footer table
 }
 
 
-footer table, footer th, footer td 
+main table, main th, main td 
 {
     border: 1px solid black;
     padding: 20px;
@@ -59,7 +91,7 @@ footer table, footer th, footer td
     border-radius: 26px;
 }
 
-footer th
+main th
 {
     color:black;
 }
@@ -71,23 +103,23 @@ a
     color:black;
 }
 
-footer tr:hover
+main tr:hover
 {
     background-color: white;
 }
 
 
-footer table
+main table
 {
     border-radius: 20px;
 }
 /* the end for table design */
 
-/* the style for the unorder list in footer */
-footer ul 
+/* the style for the unorder list in main */
+main ul 
 {
     margin-top: 5%;
-    margin-left:34%;
+    margin-left:28%;
     font-size: 25px;
     background-color: #ffffffad;
     width: 43%;
@@ -95,7 +127,7 @@ footer ul
     padding-bottom: 36px
 }
 
-footer li 
+main li 
 {
     padding-top: 51px;
     padding-left: 52px;
@@ -117,4 +149,49 @@ footer li
 {
     cursor:pointer;
     background-color:#640d1479;
+}
+
+#dataChart
+{
+    margin-top:10%;
+    color:black;
+    margin-bottom:5%;
+    /* margin-left:10%; */
+}
+
+footer
+{
+    background-color:white;
+    height:250px;
+}
+
+footer ul 
+{
+    background-color:white;
+    width:100%;
+    min-height:132px;
+    padding-top:31px;
+    color:rgba(255, 0, 0, 0.699);
+}
+footer h1
+{
+    display:inline;
+    font-size:35px;
+    text-align:center;
+    margin-top:40px;
+}
+
+footer ul li 
+{
+    cursor:pointer;
+    font-size: 25px;
+    /* margin-left:10%; */
+    display:inline;
+    padding:100px;
+}
+
+
+footer h1
+{
+    margin-left: 37%;
 }
