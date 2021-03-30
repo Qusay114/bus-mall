@@ -28,8 +28,10 @@ let imageIndex =[];
 let usedNums = [];
 let votes =[];
 let views = [];
-const rounds = 3;
+const rounds = 25;
 let counterRounds = 0;
+let keyVotes ='';
+let valueVotes = 0;
 
 // array.indexOf(12);
 //create random function
@@ -88,10 +90,10 @@ SlideShow.all[0];
 //to show the images on the page
 function render()
 {
-  imageIndex = randomNum(0,imgNames.length-0.5,3,false,usedNums); //[4,9,1] //[2,4,5]
-  usedNums.push(imageIndex[0]);
-  usedNums.push(imageIndex[1]);
-  usedNums.push(imageIndex[2]);
+  imageIndex = randomNum(0,imgNames.length-0.5,3,false,imageIndex); //[4,9,1] //[2,4,5]
+  // usedNums.push(imageIndex[0]);
+  // usedNums.push(imageIndex[1]);
+  // usedNums.push(imageIndex[2]);
   // console.log('used nums ', usedNums);
   image1.src = SlideShow.all[imageIndex[0]].path; //SlidShow.all[4].path
   SlideShow.all[imageIndex[0]].views ++;
@@ -117,6 +119,12 @@ function trafiic(x)
   if(counterRounds<rounds)
   {
     SlideShow.all[imageIndex[x-1]].votes ++ ;
+    keyVotes = `Total votes of ${SlideShow.all[imageIndex[x-1]].imageName} is `;
+    valueVotes = 1 ; //here there it will assume one vote for the first time vote 
+    console.log('previous votes ', valueVotes);
+    if(localStorage.getItem(keyVotes) !== null)
+      valueVotes = Number(localStorage.getItem(keyVotes)) + 1 ; //here incase the previous number of votes is not nutll , it will add 1 to the previous number of votes and assign it to valueVotes
+    localStorage.setItem(keyVotes, valueVotes );
     if(counterRounds<rounds-1)
       render();
     // if(counterRounds === rounds )
