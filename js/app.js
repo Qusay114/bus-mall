@@ -28,8 +28,9 @@ let imageIndex =[];
 let usedNums = [];
 let votes =[];
 let views = [];
-const rounds = 3;
+const rounds = 25;
 let counterRounds = 0;
+
 
 // array.indexOf(12);
 //create random function
@@ -88,10 +89,10 @@ SlideShow.all[0];
 //to show the images on the page
 function render()
 {
-  imageIndex = randomNum(0,imgNames.length-0.5,3,false,usedNums); //[4,9,1] //[2,4,5]
-  usedNums.push(imageIndex[0]);
-  usedNums.push(imageIndex[1]);
-  usedNums.push(imageIndex[2]);
+  imageIndex = randomNum(0,imgNames.length-0.5,3,false,imageIndex); //[4,9,1] //[2,4,5]
+  // usedNums.push(imageIndex[0]);
+  // usedNums.push(imageIndex[1]);      //I used this to make the images never repeated , just appear for once
+  // usedNums.push(imageIndex[2]);
   // console.log('used nums ', usedNums);
   image1.src = SlideShow.all[imageIndex[0]].path; //SlidShow.all[4].path
   SlideShow.all[imageIndex[0]].views ++;
@@ -99,7 +100,7 @@ function render()
   SlideShow.all[imageIndex[1]].views ++;
   image3.src = SlideShow.all[imageIndex[2]].path;
   SlideShow.all[imageIndex[2]].views ++;
-  // console.log(imageIndex);
+  console.log('random numbers ' , imageIndex);
   // counterRounds++;
 }
 
