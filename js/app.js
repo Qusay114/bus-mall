@@ -30,6 +30,8 @@ let votes =[];
 let views = [];
 const rounds = 3;
 let counterRounds = 0;
+let keyVotes ='';
+let valueVotes = 0;
 
 // array.indexOf(12);
 //create random function
@@ -117,6 +119,11 @@ function trafiic(x)
   if(counterRounds<rounds)
   {
     SlideShow.all[imageIndex[x-1]].votes ++ ;
+    keyVotes = `Total votes of ${SlideShow.all[imageIndex[x-1]].imageName} is `;
+    valueVotes = SlideShow.all[imageIndex[x-1]].votes;
+    if(localStorage.getItem(keyVotes) !== null)
+      valueVotes = valueVotes + Number(localStorage.getItem(keyVotes));
+    localStorage.setItem(keyVotes, valueVotes );
     if(counterRounds<rounds-1)
       render();
     // if(counterRounds === rounds )
